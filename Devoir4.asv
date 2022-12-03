@@ -1,36 +1,38 @@
-function [xi yi zi face]=Devoir4(Robs,nint,next)
-Robs=[Robs(1)/100 Robs(2)/100 Robs(3)/100];
-nbrSeparationTheta=250;
-nbrSeparationPhi=500;
-[thetaMin,thetaMax,theta]=calculerTheta(Robs); %Calcul de theta
-[phiMin,phiMax,phi]=calculerPhi(Robs,theta); %Calcul de phi
+function [xi,yi,zi,face]=Devoir4(Robs,nint,next)
+R=8; %Rayon du sphere (cm)
+MoinsRobs=-Robs;
+face=[];
+d=0;
+nbrSeparationTheta=50;
+nbrSeparationPhi=50;
+[thetaMin,thetaMax,theta]=calculerTheta(MoinsRobs); %Calcul de theta
+[phiMin,phiMax,phi]=calculerPhi(MoinsRobs,theta); %Calcul de phi
 
-deplacement=0.001;
+thetaMin=0;
+the
 pasTheta=(thetaMax-theta)/nbrSeparationTheta;
-pasPhi=(phiMax-phi)/nbrSeparationPhi;
+pasPhi=(phiMax-phiMin)/nbrSeparationPhi;
 
+noRayon=1;
 %Parcours du haut demi-cercle
-for i=0:nbrSeparationTheta-1
-    for j=0:nbrSeparationPhi-1
-        theta=theta+pasTheta*i;
-        phi=phiMin+pasPhi*j;
-        
-        omega=[sin(theta)*cos(phi) sin(theta)*sin(phi) cos(theta)];
+for i=0:49
+    for j=0:49
+        thetaCourant=theta+pasTheta*i;
+        phiCourant=phiMin+pasPhi*j;
+        omega=[sin(thetaCourant)*cos(phiCourant) sin(thetaCourant)*sin(phiCourant) cos(thetaCourant)];
         u=omega/norm(omega);
-        uo=u;
-        
-        point=Robs;
-        toucheSphere=false;
-        
-        while(toucheSphere==false)
-            if (norm(point))
-                toucheSphere=true;
-            else
-                point=point+deplacement*u;
-                distance=distance+deplacement;
-            end
-        end
+        xi(noRayon)=omega(1);
+        yi(noRayon)=omega(2);
+        zi(noRayon)=omega(3);
+        face(noRayon)=4;
+        %         syms d
+        %         eqn=(Robs(1)+d*u(1)).^2+(Robs(2)+d*u(2)).^2+(Robs(3)+d*u(3)).^2==R.^2;
+        %         Sd=solve(eqn,d);
+        %         disp(size(Sd));
+        j=j+1;
+        noRayon=noRayon+1;
     end
+    i=i+1;
 end
 %Parcours du bas demi-cercle
 % for i=0:nbrSeparationTheta-1

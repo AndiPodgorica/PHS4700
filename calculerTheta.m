@@ -1,9 +1,9 @@
-function [thetaMin,thetaMax,theta]=calculerTheta(robs)
+function [thetaMin,thetaMax,theta]=calculerTheta(moinsRobs)
 R=8; %Rayon du sphere (cm)
 
-deltaTheta=asin(R/norm(robs));
+deltaTheta=asin(R/norm(moinsRobs));
 
-theta=acos(robs(3)/norm(robs));
+theta=acos(moinsRobs(3)/norm(moinsRobs));
 if (sin(theta)<0)
     theta=2*pi-theta;
 end
