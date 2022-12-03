@@ -1,13 +1,11 @@
 function [xi yi zi face]=Devoir4(Robs,nint,next)
-R=8; %Rayon du sphere (cm)
-MoinsRobs=-Robs;
-face=[];
-d=0;
+Robs=[Robs(1)/100 Robs(2)/100 Robs(3)/100];
 nbrSeparationTheta=250;
 nbrSeparationPhi=500;
-[thetaMin,thetaMax,theta]=calculerTheta(MoinsRobs); %Calcul de theta
-[phiMin,phiMax,phi]=calculerPhi(MoinsRobs,theta); %Calcul de phi
+[thetaMin,thetaMax,theta]=calculerTheta(Robs); %Calcul de theta
+[phiMin,phiMax,phi]=calculerPhi(Robs,theta); %Calcul de phi
 
+deplacement=0.001;
 pasTheta=(thetaMax-theta)/nbrSeparationTheta;
 pasPhi=(phiMax-phi)/nbrSeparationPhi;
 
@@ -19,11 +17,19 @@ for i=0:nbrSeparationTheta-1
         
         omega=[sin(theta)*cos(phi) sin(theta)*sin(phi) cos(theta)];
         u=omega/norm(omega);
-        disp(u);
-        syms d
-        eqn=(Robs(1)+d*u(1)).^2+(Robs(2)+d*u(2)).^2+(Robs(3)+d*u(3)).^2==R.^2;
-        Sd=solve(eqn,d);
-        disp(Sd);
+        uo=u;
+        
+        point=Robs;
+        toucheSphere=false;
+        
+        while(toucheSphere==false)
+            if (norm(point))
+                toucheSphere=true;
+            else
+                point=point+deplacement*u;
+                distance=distance+deplacement;
+            end
+        end
     end
 end
 %Parcours du bas demi-cercle

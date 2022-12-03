@@ -1,8 +1,12 @@
-function [thetaMin,thetaMax]=calculerTheta(ro)
+function [thetaMin,thetaMax,theta]=calculerTheta(robs)
 R=8; %Rayon du sphere (cm)
-theta=atan(ro(2)/ro(1));
 
-deltaTheta=asin(R/norm(ro));
+deltaTheta=asin(R/norm(robs));
+
+theta=acos(robs(3)/norm(robs));
+if (sin(theta)<0)
+    theta=2*pi-theta;
+end
 
 thetaMin=theta-deltaTheta;
 thetaMax=theta+deltaTheta;
