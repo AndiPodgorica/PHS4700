@@ -1,7 +1,0 @@
-function [phiMin,phiMax,phi]=calculerPhi(ro,theta)
-
-
-
-phiMin=phi-deltaPhi;
-phiMax=phi+deltaPhi;
-end
