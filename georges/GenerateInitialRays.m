@@ -1,8 +1,8 @@
 function rays = GenerateInitialRays(problem)
 
-if (problem.hyperParam.debugMode)
-    problem.hyperParam.n_rayon_minimum = problem.hyperParam.n_rayon_minimum_debug;
-end
+% if (problem.hyperParam.debugMode)
+%     problem.hyperParam.n_rayon_minimum = problem.hyperParam.n_rayon_minimum_debug;
+% end
 
 rays = {};
 
@@ -44,8 +44,8 @@ for i_ray = -n_rays_per_axe/2:n_rays_per_axe/2
     end
 end
 
-if (problem.hyperParam.debugMode)
-    printf("Nombre de rayons générés %d \n",length(rays));
-end
+% if (problem.hyperParam.debugMode)
+%     printf("Nombre de rayons générés %d \n",length(rays));
+% end
 
 end

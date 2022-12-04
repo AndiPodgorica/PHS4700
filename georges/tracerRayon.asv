@@ -1,6 +1,7 @@
-function [finalPos faces] = RayTrace(problem, rays)
+function [finalPos faces] = tracerRayon(problem, rays)
 
 stack = rays;
+
 finalPos = {};
 faces = {};
 
