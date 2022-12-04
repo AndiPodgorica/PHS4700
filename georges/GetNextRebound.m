@@ -2,7 +2,6 @@ function [doesRebound doesHitObject closest_distance point normal color isEnteri
 
 planes = problem.planes;
 u = line.line_direction;
-doesRebound=false;
 
 color = line.color;
 closest_distance = inf;
@@ -38,10 +37,10 @@ if doesIntersect
                 isEnteringSphere = true;
             end
             doesHitObject = false;
-            endif
         end
     end
-    
-    doesRebound = closest_distance ~= inf;
-    
+end
+
+doesRebound = closest_distance ~= inf;
+
 end

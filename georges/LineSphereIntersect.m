@@ -21,18 +21,18 @@ intersection_points = {};
 
 if discriminant < 0
     return;
-    endif
-    
-    if discriminant == 0
-        doesIntersect = true;
-        ti = {(-b)/(2*a)};
-        intersection_points = {p + ti{1}*u};
-    end
-    
-    if discriminant > 0
-        doesIntersect = true;
-        ti = {(-b + real(sqrt(discriminant)))/(2*a), (-b - real(sqrt(discriminant)))/(2*a)};
-        intersection_points = {p + ti{1}*u, p + ti{2}*u};
-    end
-    
+end
+
+if discriminant == 0
+    doesIntersect = true;
+    ti = {(-b)/(2*a)};
+    intersection_points = {p + ti{1}*u};
+end
+
+if discriminant > 0
+    doesIntersect = true;
+    ti = {(-b + real(sqrt(discriminant)))/(2*a), (-b - real(sqrt(discriminant)))/(2*a)};
+    intersection_points = {p + ti{1}*u, p + ti{2}*u};
+end
+
 end

@@ -1,7 +1,6 @@
-function [finalPos,faces] = RayTrace(problem, rays)
+function [finalPos faces] = RayTrace(problem, rays)
 
 stack = rays;
-
 finalPos = {};
 faces = {};
 
@@ -22,11 +21,11 @@ while ~isempty(stack)
         hold on;
     end
     
-    if doesHitObject==true
+    if doesHitObject
         total_distance = ray.distance + distance;
         finalPos{end+1} = ray.origin + total_distance * ray.origin_direction;
         faces{end+1} = color;
-    elseif doesRebound==true
+    elseif doesRebound
         ray.distance = ray.distance + distance;
         copy_ray = {};
         copy_ray.origin = ray.origin;
@@ -36,19 +35,17 @@ while ~isempty(stack)
         copy_ray.color = ray.color;
         copy_ray.line_direction = ray.line_direction;
         copy_ray.line_point = point;
-        
-        reflected_ray = Reflect(problem, ray, normal, point);
-        
+        % relfection
+        [reflected_ray] = Reflect(problem, ray, normal, point);
         stack{end+1}=reflected_ray;
-        
-        [refracted_ray,isTotalReflection] = calculerRefraction(problem, copy_ray, normal, point, isEnteringSphere);
-        
+        % refraction
+        [isTotalReflection refracted_ray] = Refract(problem, copy_ray, normal, point, isEnteringSphere);
         if ~isTotalReflection
-            refracted_ray.nRebound=refracted_ray.nRebound+1;
-            stack{end+1}=refracted_ray;
+            stack{end+1}=reflected_ray;
         end
-        
     end
     
 end
+
+
 end
