@@ -10,7 +10,6 @@ while ~isempty(rayons)
             [distance,positionFinale,face]=determinerFace(rayon.distance,distance,positionFinale,rayon.origin_direction,rayon.origin,face,couleur);
         elseif rebond==true
             rayon.distance=rayon.distance + distance;
-%             rayonIncident=calculerRayonIncident(point,rayon);
             rayonReflechi=Reflect(problem,rayon,n,point);
             rayons{end+1}=rayonReflechi;
             [isTotalReflection,rayonRefracte]=Refraction(problem.param.n_int,problem.param.n_ext,rayon,n,point,estDansLaSphere);
