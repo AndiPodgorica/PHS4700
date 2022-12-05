@@ -5,7 +5,7 @@ face={};
 while ~isempty(rayons)
     [rayons,rayon]=Pop(rayons);
     if doitRebondir(rayon,problem)
-        [rebond,collisionPrisme,distance,point,n,couleur,estDansLaSphere]=GetNextRebound(problem,rayon);
+        [rebond,collisionPrisme,distance,point,n,couleur,estDansLaSphere]=ProchainRebond(problem,rayon);
         if collisionPrisme==true
             [distance,positionFinale,face]=determinerFace(rayon.distance,distance,positionFinale,rayon.origin_direction,rayon.origin,face,couleur);
         elseif rebond==true

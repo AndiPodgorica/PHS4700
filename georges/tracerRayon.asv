@@ -1,0 +1,56 @@
+function [positionFinale,face] = tracerRayon(problem, rayons)
+positionFinale={};
+face={};
+
+while ~isempty(rayons)
+    [rayons,rayon]=Pop(rayons);
+    if doitRebondir(rayon,problem)
+        [rebond,collisionPrisme,distance,point,n,couleur,estDansLaSphere]=GetNextRebound(problem,rayon);
+        if collisionPrisme==true
+            [distance,positionFinale,face]=determinerFace(rayon.distance,distance,positionFinale,rayon.origin_direction,rayon.origin,face,couleur);
+        elseif rebond==true
+            rayon.distance=rayon.distance + distance;
+%             rayonIncident=calculerRayonIncident(point,rayon);
+            rayonReflechi=Reflect(problem,rayon,n,point);
+            rayons{end+1}=rayonReflechi;
+            [isTotalReflection,rayonRefracte]=Refraction(problem.param.n_int,problem.param.n_ext,rayon,n,point,estDansLaSphere);
+=======
+stack = rays;
+
+finalPos = {};
+faces = {};
+
+while ~isempty(stack)
+    
+    [stack ray] = Pop(stack);
+    
+    if ray.nRebound <= problem.hyperParam.nRebondMax
+        [doesRebound doesHitObject distance point normal color isEnteringSphere] = ProchainRebond(problem, ray);
+        
+        if doesHitObject
+            total_distance = ray.distance + distance;
+            finalPos{end+1} = ray.origin + total_distance * ray.origin_direction;
+            faces{end+1} = color;
+        elseif doesRebound
+            ray.distance = ray.distance + distance;
+            copy_ray = {};
+            copy_ray.origin = ray.origin;
+            copy_ray.origin_direction = ray.origin_direction;
+            copy_ray.distance = ray.distance;
+            copy_ray.nRebound = ray.nRebound;
+            copy_ray.color = ray.color;
+            copy_ray.line_direction = ray.line_direction;
+            copy_ray.line_point = point;
+            % relfection
+            [reflected_ray] = Reflect(problem, ray, normal, point);
+            stack{end+1}=reflected_ray;
+            % refraction
+            [isTotalReflection rayonRefracte] = Refraction(problem, copy_ray, normal, point, isEnteringSphere);
+>>>>>>> 0d08cbb259aaf0391240279acbe3df6abdff7b46
+            if ~isTotalReflection
+                rayons{end+1}=rayonRefracte;
+            end
+        end
+    end
+end
+end
