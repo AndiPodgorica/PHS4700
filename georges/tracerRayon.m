@@ -13,7 +13,7 @@ while ~isempty(rayons)
             rayonIncident=calculerRayonIncident(point,rayon);
             rayonReflechi=Reflect(problem,rayon,n,point);
             rayons{end+1}=rayonReflechi;
-            [isTotalReflection,rayonRefracte]=Refract(problem,rayonIncident,n,point,estDansLaSphere);
+            [isTotalReflection,rayonRefracte]=Refraction(problem.param.n_int,problem.param.n_ext,rayon,n,point,estDansLaSphere);
             if ~isTotalReflection
                 rayons{end+1}=rayonRefracte;
             end

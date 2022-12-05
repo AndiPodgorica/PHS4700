@@ -4,7 +4,7 @@
 
 clc ; clear all ; format loose %compact 
 format long;
-close all ;
+close all ; 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% D�finir les cas %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
