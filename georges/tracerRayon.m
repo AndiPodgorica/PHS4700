@@ -10,7 +10,7 @@ while ~isempty(stack)
     [stack ray] = Pop(stack);
     
     if ray.nRebound <= problem.hyperParam.nRebondMax
-        [doesRebound doesHitObject distance point normal color isEnteringSphere] = GetNextRebound(problem, ray);
+        [doesRebound doesHitObject distance point normal color isEnteringSphere] = ProchainRebond(problem, ray);
         
         if doesHitObject
             total_distance = ray.distance + distance;
