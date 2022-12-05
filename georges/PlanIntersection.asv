@@ -1,0 +1,29 @@
+function [intersection,t,pointIntersection] = PlanI(problem, plan, ligne)
+d = plan.plane_distance;
+n = plan.plane_normal;
+p = ligne.line_point;
+u = ligne.line_direction;
+pointIntersection = [0; 0; 0];
+intersection = false;
+t = nan;
+
+limiteInferieurePlan = plan.limiteInferieurePlan;
+limitePlanSuperieur = plan.limitePlanSuperieur;
+
+if abs(dot(n.', u))<problem.hyperParam.epsilon
+    return;
+end
+
+t=(d-dot(n.',p))/dot(n.', u);
+
+pointIntersection = p+(t*u);
+
+for i = 1:problem.hyperParam.ndim
+    if  pointIntersection(i) > limitePlanSuperieur(i) || pointIntersection(i) < limiteInferieurePlan(i)
+        return;
+    end
+end
+
+intersection = true;
+
+end

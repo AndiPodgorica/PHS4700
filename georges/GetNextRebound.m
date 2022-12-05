@@ -12,7 +12,7 @@ isEnteringSphere = false;
 
 % Find intersection of line with each plane
 for i = 1:length(planes)
-    [doesIntersect, distance, intersection_point] = LinePlaneIntersect(problem, planes{i}, line);
+    [doesIntersect, distance, intersection_point] = PlanIntersection(problem, planes{i}, line);
     if doesIntersect && distance > 0 && distance < closest_distance
         closest_distance = distance;
         color = planes{i}.color;
