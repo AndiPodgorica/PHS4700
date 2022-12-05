@@ -92,20 +92,36 @@ sphere = {};
 sphere.R = 8; % cm
 sphere.pos = [0; 0; 0]; % m
 problem.sphere = sphere;
+% -------------------------------Sphere------------------------------------%
 
 rayons={};
 
 [unitaireI,unitaireJ]=calculerIJ(problem.param.R_obs);
+
 nbrRayons=calculerNombreRayons(problem.hyperParam.n_rayon_minimum);
+
 [nbrRayonsDirection,pas]=calculerPas(nbrRayons,problem.sphere.R);
 
 for rayonI=-nbrRayonsDirection/2:nbrRayonsDirection/2
     for rayonJ=-nbrRayonsDirection/2:nbrRayonsDirection/2
-        posCollision=calculerPosImpact(rayonI,rayonJ,pas,unitaireI,unitaireJ);
-        if dot(posCollision, posCollision)<problem.sphere.R^2            
-            rayon=creationRayon(problem.param.R_obs,posCollision);
-            rayons{end+1}=rayon;
+        [t,u,potentiel_ray_sphere_hit]=calculerNormeVecteurDirection(rayonI,unitaireJ,pas);
+%         t=rayonI*pas;
+%         u=rayonJ*pas;
+%         potentiel_ray_sphere_hit = t*unitaireI + u*unitaireJ;
+        if dot(potentiel_ray_sphere_hit, potentiel_ray_sphere_hit) > problem.sphere.R^2
+            continue;
         end
+        ray = {};
+        ray.origin = problem.param.R_obs;
+        ray.origin_direction = potentiel_ray_sphere_hit - problem.param.R_obs;
+        ray.origin_direction = ray.origin_direction/norm(ray.origin_direction);
+        ray.color = nan;
+        ray.distance = 0;
+        ray.nRebound = 0;
+        ray.line_direction = potentiel_ray_sphere_hit - problem.param.R_obs;
+        ray.line_direction = ray.line_direction/norm(ray.line_direction);
+        ray.line_point = problem.param.R_obs;
+        rayons{end+1} = ray;
     end
 end
 [finalPos faces] = tracerRayon(problem, rayons);

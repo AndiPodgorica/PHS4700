@@ -17,7 +17,7 @@ nout = [1 1   1   1.5];
 nin  = [1.5  1.5 1.5 1];
 Robs  = [20 20 10; 0 20 2; 0 0 10; 0 0 10];
 
-for itst=1:1
+for itst=1:4
   tic
   clf;
   hold;
