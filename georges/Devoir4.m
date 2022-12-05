@@ -108,7 +108,7 @@ for rayonI=-nbrRayonsDirection/2:nbrRayonsDirection/2
         end
     end
 end
-[finalPos faces] = tracerRayon(problem, rayons);
+[finalPos faces]=tracerRayon(problem, rayons);
 
 for i=1:length(finalPos)
     xi(i) = finalPos{i}(1);

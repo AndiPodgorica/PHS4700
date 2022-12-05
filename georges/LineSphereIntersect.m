@@ -1,4 +1,4 @@
-function [doesIntersect ti intersection_points] = LineSphereIntersect(problem, line)
+function [doesIntersect,ti,intersection_points]=LineSphereIntersect(problem,line)
 
 R = problem.sphere.R;
 p = line.line_point;
