@@ -30,7 +30,7 @@ while ~isempty(stack)
             [reflected_ray] = Reflect(problem, ray, normal, point);
             stack{end+1}=reflected_ray;
             % refraction
-            [isTotalReflection refracted_ray] = Refract(problem, copy_ray, normal, point, isEnteringSphere);
+            [isTotalReflection rayonRefracte] = Refraction(problem, copy_ray, normal, point, isEnteringSphere);
             if ~isTotalReflection
                 stack{end+1}=reflected_ray;
             end
