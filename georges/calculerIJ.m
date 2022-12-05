@@ -6,7 +6,6 @@ if (norm(unitaireI)==0)
 end
 
 unitaireJ=cross(posObservateur,unitaireI);
-
 unitaireI=unitaireI/norm(unitaireI); %Transformer i,j,posObservateur en vecteur unitaire
 unitaireJ=unitaireJ/norm(unitaireJ);
 end

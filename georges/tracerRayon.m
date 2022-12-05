@@ -1,4 +1,4 @@
-function [positionFinale,face]=tracerRayon(plans,sphereRayon,spherePos,epsilon,nbrDiminue,nint,next,rayons)
+function [xi,yi,zi,faces]=tracerRayon(plans,sphereRayon,spherePos,epsilon,nbrDiminue,nint,next,rayons)
 positionFinale={};
 face={};
 
@@ -17,5 +17,12 @@ while ~isempty(rayons)
             end
         end
     end
+end
+
+for i=1:length(positionFinale)
+    xi(i)=positionFinale{i}(1);
+    yi(i)=positionFinale{i}(2);
+    zi(i)=positionFinale{i}(3);
+    faces(i)=face{i};
 end
 end

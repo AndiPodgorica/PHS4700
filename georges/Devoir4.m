@@ -1,19 +1,4 @@
 function [xi, yi, zi, face] = Devoir4(Robs, nint, next)
-
-xi = [];
-yi = [];
-zi = [];
-face = [];
-
-problem = {};
-% ---------------------------------Param ----------------------------------%
-param = {};
-param.R_obs = [Robs(1); Robs(2); Robs(3)];
-param.n_int = nint;
-param.n_ext = next;
-problem.param = param;
-% ---------------------------------Param ----------------------------------%
-% ---------------------------------Color ----------------------------------%
 color = {};
 color.cyan = 1;
 color.blue = 2;
@@ -77,21 +62,7 @@ plane_6.plane_domaine_upper_bound = [box.a/2; box.b/2; box.c];
 
 planes = {plane_1, plane_2, plane_3, plane_4, plane_5, plane_6};
 problem.planes = planes;
-% ---------------------------------Planes ---------------------------------%
-% -------------------------------hyperParam--------------------------------%
-hyperParam = {};
-hyperParam.n_rayon_minimum = 1000;
-hyperParam.n_rayon_minimum_debug = 20;
-hyperParam.epsilon = 1e-6;
-hyperParam.nRebondMax = 4;
-hyperParam.ndim = 3;
-problem.hyperParam = hyperParam;
-% -------------------------------hyperParam--------------------------------%
-% -------------------------------Sphere------------------------------------%
-sphere = {};
-sphere.R = 8; % cm
-sphere.pos = [0; 0; 0]; % m
-problem.sphere = sphere;
+
 
 rayons={};
 Robs=[Robs(1);Robs(2);Robs(3)];
@@ -109,12 +80,5 @@ for rayonI=-nbrRayonsDirection/2:nbrRayonsDirection/2
     end
 end
 
-[finalPos faces]=tracerRayon(problem.planes,8,[0;0;0],1e-6,3,nint,next,rayons);
-
-for i=1:length(finalPos)
-    xi(i)=finalPos{i}(1);
-    yi(i)=finalPos{i}(2);
-    zi(i)=finalPos{i}(3);
-    face(i)=faces{i};
-end
+[xi,yi,zi,face]=tracerRayon(problem.planes,8,[0;0;0],1e-6,3,nint,next,rayons);
 end
