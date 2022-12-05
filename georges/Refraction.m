@@ -1,28 +1,19 @@
 function [reflexionTotaleInterne, rayonRefracte] = Refraction(nint,next,rayon,n,point,entrerSphere)
-reflexionTotaleInterne=false;
-rayonRefracte={};
+[Nt,Ni]=calculerNtNi(entrerSphere,nint,next);
 
-Ui=rayon.line_direction/norm(rayon.line_direction);
-
-if entrerSphere
-    Nt=nint;
-    Ni=next;
-else
-    Nt=next;
-    Ni=nint;
-end
-
-if (asin(Nt/Ni)>acos(dot(n/norm(n), Ui)))&&Ni>Nt
+if (asin(Nt/Ni)>acos(dot(n/norm(n),rayon.line_direction/norm(rayon.line_direction))))&&Ni>Nt
     reflexionTotaleInterne=true;
+else
+    reflexionTotaleInterne=false;
 end
 
-j=cross(Ui,n/norm(n));
+j=cross(rayon.line_direction/norm(rayon.line_direction),n/norm(n));
 j=j/norm(j);
 k=cross(n/norm(n),j);
 k=k/norm(k);
-Si=dot(k,Ui);
-St=Ni/Nt*Si;
+Si=dot(k,rayon.line_direction/norm(rayon.line_direction));
+St=Si*(Ni/Nt);
 
-Ut=-(n/norm(n))*sqrt(1-St^2)+k*St;
+Ut=k*St+sqrt(1-St^2)*-(n/norm(n));
 rayonRefracte=refractionRayon(Ut,point,rayon);
 end
