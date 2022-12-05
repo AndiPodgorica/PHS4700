@@ -1,8 +1,8 @@
-function[distanceP,couleurF,pointF,n,contactSolide]=distanceFonctionPoint(distance,couleur,intersection,nPlan)
+function[distanceP,couleurF,pointF,n,contactSolide]=distanceFonctionPoint(distance,couleur,intersection,plan)
 distanceP=distance;
 couleurF=couleur;
 pointF=intersection;
-n=nPlan/norm(nPlan);
+n=plan/norm(plan);
 n=n/norm(n);
 contactSolide=true;
 end

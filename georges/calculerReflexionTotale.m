@@ -1,5 +1,5 @@
 function estReflexion=calculerReflexionTotale(Nt,Ni,n,direction)
-if (asin(Nt/Ni)>acos(dot(n/norm(n),direction/norm(direction))))&&Ni>Nt
+if (acos(dot(n/norm(n),direction/norm(direction)))<asin(Nt/Ni))&&Ni>Nt
     estReflexion=true;
 else
     estReflexion=false;

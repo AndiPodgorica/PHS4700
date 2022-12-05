@@ -94,22 +94,22 @@ sphere.pos = [0; 0; 0]; % m
 problem.sphere = sphere;
 
 rayons={};
-
-[unitaireI,unitaireJ]=calculerIJ(problem.param.R_obs);
-nbrRayons=calculerNombreRayons(problem.hyperParam.n_rayon_minimum);
-[nbrRayonsDirection,pas]=calculerPas(nbrRayons,problem.sphere.R);
+Robs=[Robs(1);Robs(2);Robs(3)];
+[unitaireI,unitaireJ]=calculerIJ(Robs);
+nbrRayons=calculerNombreRayons(1000);
+[nbrRayonsDirection,pas]=calculerPas(nbrRayons,8);
 
 for rayonI=-nbrRayonsDirection/2:nbrRayonsDirection/2
     for rayonJ=-nbrRayonsDirection/2:nbrRayonsDirection/2
         posCollision=calculerPosImpact(rayonI,rayonJ,pas,unitaireI,unitaireJ);
-        if dot(posCollision, posCollision)<problem.sphere.R^2            
-            rayon=creationRayon(problem.param.R_obs,posCollision);
+        if dot(posCollision, posCollision)<64            
+            rayon=creationRayon(Robs,posCollision);
             rayons{end+1}=rayon;
         end
     end
 end
 
-[finalPos faces]=tracerRayon(problem.planes,problem.sphere.R,problem.sphere.pos,problem.hyperParam.epsilon,problem.hyperParam.ndim,nint,next,rayons);
+[finalPos faces]=tracerRayon(problem.planes,8,[0;0;0],1e-6,3,nint,next,rayons);
 
 for i=1:length(finalPos)
     xi(i)=finalPos{i}(1);

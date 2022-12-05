@@ -4,9 +4,9 @@ reflexiontotaleInterne=calculerReflexiontotale(nt,ni,n,rayon.line_direction);
 
 j=calculerJ(n,rayon.line_direction);
 k=calculerK(n,j);
-Si=calculerSi(k,rayon.line_direction);
-St=calculerSt(ni,ni,Si);
+si=calculersi(k,rayon.line_direction);
+st=calculerst(ni,ni,si);
 
-Ut=calculerUt(k,St,n);
+Ut=calculerUt(k,st,n);
 rayonRefracte=refractionRayon(Ut,point,rayon);
 end
