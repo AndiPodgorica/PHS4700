@@ -1,13 +1,13 @@
-function [rebondit,contactSolide,distanceProche,point,normale,couleur,interieurSphere]=calculerProchainRebond(problem,line)
+function [rebondit,contactSolide,dp,point,normale,couleur,interieurSphere]=calculerProchainRebond(plans,sphereRayon,spherePos,rayon,epsilon,nbrDiminue)
 
-[couleur,distanceProche,contactSolide,interieurSphere,point,normale]=initialiserRebondValeurs(line.color,inf);
+[couleur,dp,contactSolide,interieurSphere,point,normale]=initialiserRebondValeurs(rayon.color,inf);
 
-for i=1:length(problem.planes)
-    [intersection, distance, intersection_point]=PlanIntersection(problem, problem.planes{i},line);
-    if intersection&&distance>0&&distance<distanceProche
-        [distanceProche,couleur,point,normale,contactSolide]=distanceFonctionPoint(distance,problem.planes{i}.color,intersection_point,problem.planes{i}.plane_normal);
+for i=1:length(plans)
+    [intersection, distance, intersectionP]=PlanIntersection(epsilon,nbrDiminue,plans{i},rayon);
+    if estIntersection(distance,intersection,dp)
+        [dp,couleur,point,normale,contactSolide]=distanceFonctionPoint(distance,plans{i}.color,intersectionP,plans{i}.plane_normal);
     end
 end
-trouverIntersectionSphere(problem,line);
-rebondit=estPlusPetitDistance(inf,distanceProche);
+trouverIntersectionSphere(sphereRayon,spherePos,rayon.line_direction,rayon.line_point);
+rebondit=estPlusPetitDistance(inf,dp);
 end

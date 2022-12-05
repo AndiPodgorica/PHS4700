@@ -1,13 +1,13 @@
-function[contactSolide,n,interieurSphere]=trouverIntersectionSphere(problem,rayon)
-[intersection,distances,pointsIntersection]=LineSphereIntersect(problem,rayon);
+function[contactSolide,n,interieurSphere]=trouverIntersectionSphere(rayonSphere,positionSphere,direction,point)
+[intersection,distances,pointsIntersection]=LineSphereIntersect(rayonSphere,point,direction);
 if intersection==false
     return
 end
 for i=1:length(distances)
     if estPlusPetitQueDistance(intersection,distances{i},inf)
+        [r,n]=estEntre2Distances(pointsIntersection{i},positionSphere,direction);
+        interieurSphere=estAInterieurSphere(r,direction);
         contactSolide=false;
-        [distanceProche,point,r,n]=estEntre2Distances(distances{i},pointsIntersection{i},problem.sphere.pos,rayon.line_direction);
-        interieurSphere=estAInterieurSphere(r,rayon.line_direction);
     end
 end
 

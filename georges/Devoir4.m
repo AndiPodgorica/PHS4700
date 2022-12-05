@@ -108,13 +108,13 @@ for rayonI=-nbrRayonsDirection/2:nbrRayonsDirection/2
         end
     end
 end
-[finalPos faces]=tracerRayon(problem, rayons);
+
+[finalPos faces]=tracerRayon(problem.planes,problem.sphere.R,problem.sphere.pos,problem.hyperParam.epsilon,problem.hyperParam.ndim,nint,next,rayons);
 
 for i=1:length(finalPos)
-    xi(i) = finalPos{i}(1);
-    yi(i) = finalPos{i}(2);
-    zi(i) = finalPos{i}(3);
-    face(i) = faces{i};
+    xi(i)=finalPos{i}(1);
+    yi(i)=finalPos{i}(2);
+    zi(i)=finalPos{i}(3);
+    face(i)=faces{i};
 end
-
 end

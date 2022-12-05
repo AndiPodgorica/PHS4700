@@ -1,5 +1,5 @@
-function doitRebondir=doitRebondir(rayon,problem)
-if rayon.nRebound<=problem.hyperParam.nRebondMax
+function doitRebondir=doitRebondir(rayon)
+if rayon.nRebound<=4
     doitRebondir=true;
 else
     doitRebondir=false;
