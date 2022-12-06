@@ -7,22 +7,16 @@ while ~isempty(rayons)
     if doitRebondir(rayon)==true
         [rebondirEncore,collisionPrisme,distance,point,n,couleur,estDansLaSphere]=calculerProchainRebond(plans,sphereRayon,spherePos,rayon,epsilon,nbrDiminue);
         if collisionPrisme==true
-            [distance,positionFinale,face]=determinerFace(rayon.distance,distance,positionFinale,rayon.origin_direction,rayon.origin,face,couleur);
+            [distance,positionFinale,face]=determinerFace(rayon.d,distance,positionFinale,rayon.posU,rayon.posDepart,face,couleur);
         elseif rebondirEncore==true
-            rayon.distance=rayon.distance+distance;
+            rayon.d=rayon.d+distance;
             [isTotalReflection,rayonRefracte]=calculerRefraction(nint,next,rayon,n,point,estDansLaSphere);
-            rayons{end+1}=calculerReflexion(rayon.line_direction,rayon.color,rayon.nRebound,rayon.origin,rayon.origin_direction,rayon.distance,n,point);
+            rayons{end+1}=calculerReflexion(rayon.ligneU,rayon.c,rayon.nbrBond,rayon.posDepart,rayon.posU,rayon.d,n,point);
             if ~isTotalReflection
                 rayons{end+1}=rayonRefracte;
             end
         end
     end
 end
-
-for i=1:length(positionFinale)
-    xi(i)=positionFinale{i}(1);
-    yi(i)=positionFinale{i}(2);
-    zi(i)=positionFinale{i}(3);
-    faces(i)=face{i};
-end
+[xi,yi,zi,faces]=remplirDonnes(positionFinale,face);
 end

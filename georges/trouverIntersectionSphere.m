@@ -4,7 +4,7 @@ if intersection==false
     return
 end
 for i=1:length(distances)
-    if estPlusPetitQueDistance(intersection,distances{i},inf)
+    if estPlusPetitQueDistance(intersection,distances{i})
         [r,n]=estEntre2Distances(pointsIntersection{i},positionSphere,direction);
         interieurSphere=estAInterieurSphere(r,direction);
         contactSolide=false;

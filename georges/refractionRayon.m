@@ -1,11 +1,10 @@
 function rayonRefracte=refractionRayon(ut,point,rayon)
 rayonRefracte = {};
-
-rayonRefracte.origin=rayon.origin;
-rayonRefracte.line_point=point;
-rayonRefracte.color=rayon.color;
-rayonRefracte.nRebound=rayon.nRebound+1;
-rayonRefracte.origin_direction=rayon.origin_direction;
-rayonRefracte.distance=rayon.distance;
-rayonRefracte.line_direction=ut;
+rayonRefracte.posDepart=rayon.posDepart;
+rayonRefracte.lignePos=point;
+rayonRefracte.c=rayon.c;
+rayonRefracte.nbrBond=rayon.nbrBond+1;
+rayonRefracte.posU=rayon.posU;
+rayonRefracte.d=rayon.d;
+rayonRefracte.ligneU=ut;
 end

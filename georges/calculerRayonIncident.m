@@ -1,10 +1,10 @@
 function incident=calculerRayonIncident(point,rayon)
 incident={};
-incident.origin = rayon.origin;
-incident.line_direction = rayon.line_direction;
-incident.nRebound = rayon.nRebound;
-incident.line_point = point;
-incident.color = rayon.color;
-incident.distance = rayon.distance;
-incident.origin_direction = rayon.origin_direction;
+incident.posDepart=rayon.posDepart;
+incident.ligneU=rayon.ligneU;
+incident.nbrBond=rayon.nbrBond;
+incident.lignePos=point;
+incident.c=rayon.c;
+incident.d=rayon.d;
+incident.posU=rayon.posU;
 end

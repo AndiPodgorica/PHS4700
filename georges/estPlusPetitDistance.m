@@ -1,6 +1,6 @@
-function rebondir=estPlusPetitDistance(dPetitAvant,dPetitApres)
-if dPetitAvant~=dPetitApres
-    rebondir=true;
-else
+function rebondir=estPlusPetitDistance(dPetitApres)
+if inf==dPetitApres
     rebondir=false;
+else
+    rebondir=true;
 end
