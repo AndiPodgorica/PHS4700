@@ -1,0 +1,102 @@
+
+Simulation 1
+La collision a eu lieu 
+Le temps final est 5.981100 s 
+Param�tres initiaux                   bloc a                bloc b 
+ x(0),y(0)) (m)                     (  0.0000 ,  0.0000)      (100.0000 ,100.0000)  
+ Theta_z(0) (rad)                        0.0000                 -1.5708               
+(v_x(0),v_y(0)) (m/s)               ( 20.0000 ,  0.0000)       (  0.0000 ,-20.0000) 
+ Omega_z(0) (r/s)                         2.0000                 -1.0000              
+ R�sultats 
+ x(t_f),y(t_f)) (m)                 ( 97.9569 ,  0.0000)    (100.0000 ,  2.0431) 
+ Theta_{z}(t_f) (r)                        11.9622                -7.5519               
+ (v_x(t_f), v_y(t_f))$ (m/s)        (  8.1773 , -6.4764)     (  6.8164 , -2.7729) 
+ Omega_z(t_f) (r/s)                       -4.1090                 7.2478               
+ 
+ 
+ 
+
+Simulation 2
+La collision a eu lieu 
+Le temps final est 3.429700 s 
+Param�tres initiaux                   bloc a                bloc b 
+ x(0),y(0)) (m)                     (  0.0000 ,  0.0000)      (100.0000 ,100.0000)  
+ Theta_z(0) (rad)                        0.0000                 -1.5708               
+(v_x(0),v_y(0)) (m/s)               ( 30.0000 ,  0.0000)       (  0.0000 ,-30.0000) 
+ Omega_z(0) (r/s)                         2.0000                 -1.0000              
+ R�sultats 
+ x(t_f),y(t_f)) (m)                 ( 96.7360 ,  0.0000)    (100.0000 ,  3.2640) 
+ Theta_{z}(t_f) (r)                         6.8594                -5.0005               
+ (v_x(t_f), v_y(t_f))$ (m/s)        (  8.2224 ,-11.7985)     ( 27.6863 , -8.3906) 
+ Omega_z(t_f) (r/s)                        3.9282                13.8087               
+ 
+ 
+ 
+
+Simulation 3
+La collision a eu lieu 
+Le temps final est 6.044700 s 
+Param�tres initiaux                   bloc a                bloc b 
+ x(0),y(0)) (m)                     (  0.0000 ,  0.0000)      (100.0000 , 50.0000)  
+ Theta_z(0) (rad)                        0.0000                 -1.5708               
+(v_x(0),v_y(0)) (m/s)               ( 20.0000 ,  0.0000)       (  0.0000 ,-10.0000) 
+ Omega_z(0) (r/s)                         2.0000                  0.0000              
+ R�sultats 
+ x(t_f),y(t_f)) (m)                 ( 98.7587 ,  0.0000)    (100.0000 ,  2.9105) 
+ Theta_{z}(t_f) (r)                        12.0894                -1.5708               
+ (v_x(t_f), v_y(t_f))$ (m/s)        (  9.5913 , -5.7565)     (  4.5358 ,  4.8540) 
+ Omega_z(t_f) (r/s)                        1.9202                 1.5087               
+ 
+ 
+ 
+
+Simulation 4
+La collison n'a pas eu lieu 
+Le temps final est 10.365800 s 
+Param�tres initiaux                   bloc a                bloc b 
+ x(0),y(0)) (m)                     (  0.0000 ,  0.0000)      ( 25.0000 , 10.0000)  
+ Theta_z(0) (rad)                        0.7854                  0.0000               
+(v_x(0),v_y(0)) (m/s)               ( 10.0000 , 10.0000)       ( 10.0000 ,  0.0000) 
+ Omega_z(0) (r/s)                         1.0000                  0.0000              
+ R�sultats 
+ x(t_f),y(t_f)) (m)                 ( 53.1804 , 53.1804)    ( 61.4661 , 10.0000) 
+ Theta_{z}(t_f) (r)                        11.1512                 0.0000               
+ (v_x(t_f), v_y(t_f))$ (m/s)        (  0.0071 ,  0.0071)     (  0.0100 ,  0.0000) 
+ Omega_z(t_f) (r/s)                        1.0000                 0.0000               
+ 
+ 
+ 
+
+Simulation 5
+La collison n'a pas eu lieu 
+Le temps final est 15.173100 s 
+Param�tres initiaux                   bloc a                bloc b 
+ x(0),y(0)) (m)                     (  0.0000 ,  0.0000)      (100.0000 , 50.0000)  
+ Theta_z(0) (rad)                        0.0000                 -1.5708               
+(v_x(0),v_y(0)) (m/s)               ( 20.0000 ,  0.0000)       (  0.0000 ,-10.0000) 
+ Omega_z(0) (r/s)                         2.0000                  0.0000              
+ R�sultats 
+ x(t_f),y(t_f)) (m)                 (157.4391 ,  0.0000)    (100.0000 , 13.5339) 
+ Theta_{z}(t_f) (r)                        30.3462                -1.5708               
+ (v_x(t_f), v_y(t_f))$ (m/s)        (  0.0099 ,  0.0000)     (  0.0000 , -0.0100) 
+ Omega_z(t_f) (r/s)                        2.0000                 0.0000               
+ 
+ 
+ 
+
+Simulation 6
+La collison n'a pas eu lieu 
+Le temps final est 15.258000 s 
+Param�tres initiaux                   bloc a                bloc b 
+ x(0),y(0)) (m)                     (  0.0000 ,  0.0000)      (100.0000 , 10.0000)  
+ Theta_z(0) (rad)                        0.0997                  0.0000               
+(v_x(0),v_y(0)) (m/s)               ( 20.0000 ,  2.0000)       ( 10.0000 ,  0.0000) 
+ Omega_z(0) (r/s)                         2.0000                  5.0000              
+ R�sultats 
+ x(t_f),y(t_f)) (m)                 (158.3510 , 15.8351)    (146.4661 , 10.0000) 
+ Theta_{z}(t_f) (r)                        30.6157                71.2900               
+ (v_x(t_f), v_y(t_f))$ (m/s)        (  0.0098 ,  0.0010)     (  0.0100 ,  0.0000) 
+ Omega_z(t_f) (r/s)                        2.0000                 5.0000               
+ 
+ 
+ 
